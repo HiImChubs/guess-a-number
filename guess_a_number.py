@@ -1,7 +1,11 @@
 import random
 
+#config
+high= 100
+low= 10
+
 rand = random.randint(1, 100)
-print("I'm thinking of a number from 1 to 100.");
+print("I'm thinking of a number from " + str(low) + " to " + str(high) + " .");
 
 guess = -1
 

@@ -33,6 +33,7 @@ def show_credits():
 def get_guess():
     while True:
         guess = input("Guess a number: ")
+        print()
 
         if guess.isnumeric():
             guess = int(guess)
@@ -41,32 +42,52 @@ def get_guess():
             print("You must enter a number.")
 
 def pick_number():
-    print("I'm thinking of a number from " + str(low) + " to " + str(high) +".")
+    print("I'm thinking of a number from " + str(low) + " to " + str(high) +" you have " + str(limit) + " guesses" + ".")
+    print()
 
     return random.randint(low, high)
 
 def check_guess(guess, rand):
     if guess < rand:
         print("You guessed too low.")
+        print()
     elif guess > rand:
         print("You guessed too high.")
+        print()
 
 def show_result(guess, rand):
     if guess == rand:
-        print("You win!")
+        print("""
+ _____             _              __   __             _    _             
+/  __ \           | |             \ \ / /            | |  | |            
+| /  \/ ___   ___ | |              \ V /___  _   _   | |  | | ___  _ __  
+| |    / _ \ / _ \| |               \ // _ \| | | |  | |/\| |/ _ \| '_ \ 
+| \__/\ (_) | (_) | |  _   _   _    | | (_) | |_| |  \  /\  / (_) | | | |
+ \____/\___/ \___/|_| (_) (_) (_)   \_/\___/ \__,_|   \/  \/ \___/|_| |_|""")
+        print()
     else:
-        print("You are such a loser! The number was " + str(rand) + ".")
+        print("""
+ _   _                      _                         
+| | | |                    | |                        
+| |_| | __ _               | |     ___  ___  ___ _ __ 
+|  _  |/ _` |              | |    / _ \/ __|/ _ \ '__|
+| | | | (_| |  _   _   _   | |___| (_) \__ \  __/ |   
+\_| |_/\__,_| (_) (_) (_)  \_____/\___/|___/\___|_| """)
+        print()
 
 def play_again():
     while True:
         decision = input("Would you like to play again? (y/n) ")
-
+        decision = decision.lower()
+        print()
+        
         if decision == 'y' or decision == 'yes':
             return True
         elif decision == 'n' or decision == 'no':
             return False
         else:
             print("I don't understand. Please enter 'y' or 'n'.")
+            print()
 
 def play():
     guess = -1

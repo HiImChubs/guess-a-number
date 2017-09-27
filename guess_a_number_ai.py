@@ -35,16 +35,13 @@ def show_credits():
     
 def get_guess(current_low, current_high):
 
-    current_low + current_high // 2
-    
-    
-    pass
+    return current_low + current_high // 2
 
 def pick_number():
     print("Pick a number in your head between " + str(low) + " and " + str(high))
+    print("and I will try to guess it.")
     print()
-    input("and I will try to guess it, press enter when you have the number.")
-
+    input("Press 'Enter' to continue")
 def check_guess(guess):
     """
     Ask the player if the computer's number was too high, too low,
@@ -54,16 +51,32 @@ def check_guess(guess):
              0 if the guess was correct
              1 if the guess was too high
     """
-    pass
+    print("Was your number " + str(guess) + " ?")
+    print("Do I need to go Higher, Lower or was I Correct?")
+    answer = input()
+    answer = answer.lower()
+    if answer == 'higher':
+        return 1
+    elif answer == 'lower':
+        return -1
+    else:
+        return 0
+                             
+        
+    
+    
+    
 
 def show_result():
     print("""
- _____             _              __   __             _    _             
-/  __ \           | |             \ \ / /            | |  | |
-| /  \/ ___   ___ | |              \ v /___  _   _   | |  | | ___  _ __  
-| |    / _ \ / _ \| |               \ // _ \| | | |  | |/\| |/ _ \| '_ \ 
-| \__/\ (_) | (_) | |  _   _   _    | | (_) | |_| |  \  /\  / (_) | | | |
- \____/\___/ \___/|_| (_) (_) (_)   \_/\___/ \__,_|   \/  \/ \___/|_| |_|""")
+ _____    _    _             
+|_   _|  | |  | |            
+  | |    | |  | | ___  _ __  
+  | |    | |/\| |/ _ \| '_ \ 
+ _| |_   \  /\  / (_) | | | |
+ \___/    \/  \/ \___/|_| |_|
+                             
+                             """)
 
 def play_again():
     while True:
@@ -92,8 +105,7 @@ def play():
         result = check_guess(guess)
 
         if result == -1:
-            # adjust current high
-            pass
+          pass
         elif result == 1:
             # adjust current low
             pass

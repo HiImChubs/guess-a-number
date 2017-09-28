@@ -22,45 +22,59 @@ def show_start_screen():
 
 def show_credits():
     print("""
- _   __    _____                _____           
-| | / /   | ___ \              |  _  \          
-| |/ /    | |_/ /_   _  ___    | | | |___ _ __  
-|    \    | ___ \ | | |/ _ \   | | | / _ \ '_ \ 
-| |\  \   | |_/ / |_| |  __/   | |/ /  __/ | | |
-\_| \_/   \____/ \__, |\___|   |___/ \___|_| |_|
-                  __/ |                         
-                 |___/                          
+ _____ _                 _           ______            ______ _             _              
+|_   _| |               | |          |  ___|           | ___ \ |           (_)             
+  | | | |__   __ _ _ __ | | _____    | |_ ___  _ __    | |_/ / | __ _ _   _ _ _ __   __ _  
+  | | | '_ \ / _` | '_ \| |/ / __|   |  _/ _ \| '__|   |  __/| |/ _` | | | | | '_ \ / _` | 
+  | | | | | | (_| | | | |   <\__ \   | || (_) | |      | |   | | (_| | |_| | | | | | (_| | 
+  \_/ |_| |_|\__,_|_| |_|_|\_\___/   \_| \___/|_|      \_|   |_|\__,_|\__, |_|_| |_|\__, | 
+                                                                       __/ |         __/ | 
+                                                                      |___/         |___/  
+___  ___          _         ______                                                         
+|  \/  |         | |        | ___ \                                                        
+| .  . | __ _  __| | ___    | |_/ /_   _                                                   
+| |\/| |/ _` |/ _` |/ _ \   | ___ \ | | |                                                  
+| |  | | (_| | (_| |  __/   | |_/ / |_| |                                                  
+\_|  |_/\__,_|\__,_|\___|   \____/ \__, |                                                  
+                                    __/ |                                                  
+                                   |___/                                                   
+ _____                                  _    _ _     _ _            _     _                
+/  __ \                                | |  | | |   (_) |          (_)   | |               
+| /  \/ ___  _ __  _ __   ___  _ __    | |  | | |__  _| |_ ___  ___ _  __| | ___           
+| |    / _ \| '_ \| '_ \ / _ \| '__|   | |/\| | '_ \| | __/ _ \/ __| |/ _` |/ _ \          
+| \__/\ (_) | | | | | | | (_) | |      \  /\  / | | | | ||  __/\__ \ | (_| |  __/          
+ \____/\___/|_| |_|_| |_|\___/|_|       \/  \/|_| |_|_|\__\___||___/_|\__,_|\___|          
+                                                                                           
+                                                                                           
 """)
     print()
     
 def get_guess(current_low, current_high):
 
-    return current_low + current_high // 2
+    return (current_low + current_high) // 2
 
 def pick_number():
-    print("Pick a number in your head between " + str(low) + " and " + str(high))
-    print("and I will try to guess it.")
+    print("Pick a number in your head between " + str(low) + " and " + str(high) + " and I will try to guess it.")
     print()
     input("Press 'Enter' to continue")
+    print()
 def check_guess(guess):
-    """
-    Ask the player if the computer's number was too high, too low,
-    or just right.
-
-    Returns -1 if the guess was too low
-             0 if the guess was correct
-             1 if the guess was too high
-    """
+    
     print("Was your number " + str(guess) + " ?")
+    print()
     print("Do I need to go Higher, Lower or was I Correct?")
+    print()
     answer = input()
     answer = answer.lower()
     if answer == 'higher':
-        return 1
-    elif answer == 'lower':
         return -1
-    else:
+    elif answer == 'lower':
+        return 1
+    elif answer == 'correct':
         return 0
+    else:
+        print("You need to enter 'higher', 'lower' or 'correct' idiot")
+        print()
                              
         
     
@@ -105,12 +119,9 @@ def play():
         result = check_guess(guess)
 
         if result == -1:
-          pass
+            current_low = guess + 1
         elif result == 1:
-            # adjust current low
-            pass
-        else:
-            pass
+            current_high = guess - 1
 
     show_result()
 

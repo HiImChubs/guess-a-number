@@ -54,26 +54,30 @@ def get_guess(current_low, current_high):
     return (current_low + current_high) // 2
 
 def pick_number():
-    print("Pick a number in your head between " + str(low) + " and " + str(high) + " and I will try to guess it.")
+    print("Welcome summoner, what is your name?")
+    name= input()
+    print("Alright " + name + " Pick a number in your head between " + str(low) + " and " + str(high) + " and I will try to guess it in "
+          + str(limit) + " tries")
     print()
-    input("Press 'Enter' to continue")
+    input("Press 'Enter' to continue " + name)
     print()
-def check_guess(guess):
+def check_guess(guess , tries):
     
-    print("Was your number " + str(guess) + " ?")
+    print("(Guess " + str(tries) + " of " + str(limit) + ") Was your number " + str(guess) + "?")
     print()
     print("Do I need to go Higher, Lower or was I Correct?")
     print()
     answer = input()
     answer = answer.lower()
-    if answer == 'higher':
+    if answer == 'higher' or answer == 'h':
         return -1
-    elif answer == 'lower':
+    elif answer == 'lower' or answer == 'l':
         return 1
-    elif answer == 'correct':
+    elif answer == 'correct' or answer == 'c':
         return 0
     else:
-        print("You need to enter 'higher', 'lower' or 'correct' idiot")
+        print()
+        print("You need to enter 'higher', 'lower' or 'correct'")
         print()
                              
         
@@ -83,18 +87,17 @@ def check_guess(guess):
 
 def show_result():
     print("""
- _____    _    _             
-|_   _|  | |  | |            
-  | |    | |  | | ___  _ __  
-  | |    | |/\| |/ _ \| '_ \ 
- _| |_   \  /\  / (_) | | | |
- \___/    \/  \/ \___/|_| |_|
-                             
-                             """)
+ _____     _    _                                _                         
+|_   _|   | |  | |                              | |                        
+  | |     | |  | | ___  _ __                    | |     ___  ___  ___ _ __ 
+  | |     | |/\| |/ _ \| '_ \                   | |    / _ \/ __|/ _ \ '__|
+ _| |_    \  /\  / (_) | | | |   _    _    _    | |___| (_) \__ \  __/ |   
+ \___/     \/  \/ \___/|_| |_|  (_)  (_)  (_)   \_____/\___/|___/\___|_|   
+                                                                             """)
 
 def play_again():
     while True:
-        decision = input("Would you like to play again? (y/n) ")
+        decision = input("Would you like to play again? (y/n)")
         decision = decision.lower()
         print()
 
@@ -103,26 +106,29 @@ def play_again():
         elif decision == 'n' or decision == 'no':
             return False
         else:
-            print("I don't understand. Please enter 'y' or 'n'.")
+            print()
+            print("I don't understand. Please enter 'y' or 'n' " + name + ".")
             print()
 
 def play():
     current_low = low
     current_high = high
     result = -1
+    tries = 0
     
     pick_number()
     
-    while result != 0:
+    while result != 0 and tries < limit:
         guess = get_guess(current_low, current_high)
 
-        result = check_guess(guess)
+        result = check_guess(guess, tries)
 
         if result == -1:
             current_low = guess + 1
         elif result == 1:
             current_high = guess - 1
 
+        tries += 1
     show_result()
 
     

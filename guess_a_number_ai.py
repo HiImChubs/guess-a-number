@@ -1,11 +1,19 @@
-import random
 import math
 
 # config
-low = 1
-high = 100
+print("Hello summoner, what is your name?")
+name = input()
+print()
+print("Now enter your select high and low numbers")
+print()
+print("Enter Low")
+print()
+low = input()
+print("Enter High")
+print()
+high = input()
+high = int(high)
 limit = math.ceil(math.log(high, 2))
-
 
 # helper functions
 def show_start_screen():
@@ -56,11 +64,9 @@ _| |_\ |_/ / / /   ./ /___ / /   ./ /___\ |_/ /_| |_./ /
 def get_guess(current_low, current_high):
 
     return (current_low + current_high) // 2
-
+    
 def pick_number():
-    print("Welcome summoner, what is your name?")
-    name= input()
-    print("Alright " + name + " Pick a number in your head between " + str(low) + " and " + str(high) + " and I will try to guess it in "
+    print("Alright " + name + " Pick a number in your head between the numbers that you chose and I will try to guess it in "
           + str(limit) + " tries or less.")
     print()
     input("Press 'Enter' to continue " + name)
@@ -69,7 +75,7 @@ def check_guess(guess , tries):
     
     print("(Guess " + str(tries) + " of " + str(limit) + ") Was your number " + str(guess) + "?")
     print()
-    print("Do I need to go Higher, Lower or was I Correct?")
+    print("Do I need to go Higher, Lower or was I Correct, DONT CHEAT " + name + " IM TRUSTING YOU!")
     print()
     answer = input()
     answer = answer.lower()
@@ -101,7 +107,7 @@ def show_result():
 
 def play_again():
     while True:
-        decision = input("I guessed the number in " + str(limit) + ". Would you like to play again? (y/n)")
+        decision = input("I guessed the number in " + str(limit) + ". Would you like to play again" + name + "? (y/n)")
         decision = decision.lower()
         print()
 

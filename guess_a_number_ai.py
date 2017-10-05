@@ -4,11 +4,12 @@ import math
 print("Hello summoner, what is your name?")
 name = input()
 print()
-print("Now enter your select high and low numbers")
+print("Now enter your select high and low numbers " + name + ".")
 print()
 print("Enter Low")
 print()
 low = input()
+low = int(low)
 print("Enter High")
 print()
 high = input()
@@ -107,7 +108,7 @@ def show_result():
 
 def play_again():
     while True:
-        decision = input("I guessed the number in " + str(limit) + ". Would you like to play again" + name + "? (y/n)")
+        decision = input("I guessed the number in " + str(limit) + ". Would you like to play again " + name + "? (y/n)")
         decision = decision.lower()
         print()
 

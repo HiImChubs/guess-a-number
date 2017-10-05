@@ -108,7 +108,7 @@ def show_result():
 
 def play_again():
     while True:
-        decision = input("I guessed the number in " + str(limit) + ". Would you like to play again " + name + "? (y/n)")
+        decision = input("I guessed the number in less than " + str(limit) + " guesses. Would you like to play again " + name + "? (y/n)")
         decision = decision.lower()
         print()
 
